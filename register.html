@@ -21,42 +21,22 @@
 
             <form id="registerForm">
                 <div class="form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Nom complet" required>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Nom complet" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
                 </div>
 
                 <div class="form-group">
-                    <div class="password-field">
-                        <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
-                        <span class="password-toggle">👁️</span>
-                    </div>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe" required>
                 </div>
 
                 <div class="form-group">
-                    <div class="password-field">
-                        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirmer le mot de passe" required>
-                        <span class="password-toggle">👁️</span>
-                    </div>
+                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="Téléphone" required>
                 </div>
 
-                <div class="form-group">
-                    <input type="tel" name="phone" class="form-control" placeholder="Téléphone" required>
-                </div>
-
-                <div class="form-checkbox">
-                    <label>
-                        <input type="checkbox" name="newsletter">
-                        <span>Je souhaite recevoir la newsletter</span>
-                    </label>
-                </div>
-
-                <button type="submit" class="register-button">
-                    <span class="button-text">S'inscrire</span>
-                    <div class="button-loader"></div>
-                </button>
+                <button type="submit" class="register-button">S'inscrire</button>
             </form>
 
             <div id="formMessage" class="form-message"></div>
@@ -67,6 +47,51 @@
         </div>
     </div>
 
-    <script type="module" src="js/register.js"></script>
+    <script>
+        // Vérifie si des données existent déjà dans le localStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const phone = document.getElementById('phone').value;
+
+            // Vérifie si l'email existe déjà
+            if (users.some(user => user.email === email)) {
+                alert('Cet email est déjà utilisé');
+                return;
+            }
+
+            // Crée un nouvel utilisateur
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password, // En production, il faudrait hasher le mot de passe
+                phone,
+                createdAt: new Date()
+            };
+
+            // Ajoute l'utilisateur au tableau
+            users.push(newUser);
+            
+            // Sauvegarde dans localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Crée une session pour l'utilisateur
+            const session = {
+                userId: newUser.id,
+                email: newUser.email,
+                name: newUser.name
+            };
+            localStorage.setItem('currentSession', JSON.stringify(session));
+
+            alert('Inscription réussie !');
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>

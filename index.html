@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rap Revolution</title>
     <link rel="stylesheet" href="styles.css">
+    <head>
+        <!-- Ajoute cette ligne avec tes autres liens CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
 </head>
 <body>
   <!-- Navigation -->
@@ -16,18 +20,40 @@
         <div class="nav-links">
             <a href="#home" class="nav-link">Accueil</a>
             <a href="#packages" class="nav-link">Packages</a>
-            <a href="#artists" class="nav-link">Artistes</a>
+            <a href="#practical" class="nav-link">Practical</a>
             <a href="#destination" class="nav-link">Destination</a>
-            <div class="auth-links">
-                <a href="login.html" class="button-secondary" id="loginBtn">Connexion</a>
-                <a href="register.html" class="button-primary" id="registerBtn">S'inscrire</a>
-                <div class="user-menu" id="userMenu">
+            <div class="auth-links" id="authLinks">
+                <!-- Version non connectée -->
+                <a href="login.html" class="button-secondary">Connexion</a>
+                <a href="register.html" class="button-primary">S'inscrire</a>
+                
+                <!-- Version connectée (cachée par défaut) -->
+                <div class="user-menu" id="userMenu" style="display: none;">
                     <img src="/api/placeholder/32/32" alt="Profile" class="user-avatar">
                     <div class="menu-dropdown">
-                         <!-- <a href="profile.html">Mon Profil</a> -->
-                        <a href="tickets.html">Mes Billets</a>
-                        <a href="#" id="logoutBtn">Déconnexion</a>
+                        <div class="menu-header">
+                            <div class="user-name">Votre Nom</div>
+                            <div class="user-email">votre@email.com</div>
+                        </div>
+                        <div class="menu-options">
+                            <a href="profile.html" class="menu-option">
+                                <i class="fas fa-user"></i>
+                                Mon Profil
+                            </a>
+                            <a href="tickets.html" class="menu-option">
+                                <i class="fas fa-ticket-alt"></i>
+                                Mes Billets
+                                <span class="badge">2</span>
+                            </a>
+                            <a href="#" class="menu-option logout-option" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Déconnexion
+                            </a>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
                 </div>
             </div>
         </div>
@@ -403,54 +429,105 @@
         </div>
     </footer>
     <!-- Scripts d'authentification -->
-<script src="auth.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const authManager = new AuthManager();
+>
+
+<script type="module">
+    import { authService } from './js/auth.js';
+
+    function updateAuthUI() {
+        const authLinks = document.getElementById('authLinks');
         const userMenu = document.getElementById('userMenu');
-        const loginBtn = document.getElementById('loginBtn');
-        const registerBtn = document.getElementById('registerBtn');
-        const userAvatar = document.querySelector('.user-avatar');
-        const menuDropdown = document.querySelector('.menu-dropdown');
-        const logoutBtn = document.getElementById('logoutBtn');
+        const loginBtn = authLinks.querySelector('.button-secondary');
+        const registerBtn = authLinks.querySelector('.button-primary');
 
-        function updateNavigation() {
-            if (authManager.currentUser) {
-                loginBtn.style.display = 'none';
-                registerBtn.style.display = 'none';
+        if (authService.isAuthenticated()) {
+            // Utilisateur connecté
+            if (loginBtn) loginBtn.style.display = 'none';
+            if (registerBtn) registerBtn.style.display = 'none';
+            if (userMenu) {
                 userMenu.style.display = 'block';
-                if (authManager.currentUser.avatar) {
-                    userAvatar.src = authManager.currentUser.avatar;
+                const user = authService.getCurrentUser();
+                if (user) {
+                    userMenu.querySelector('.user-name').textContent = user.name;
+                    userMenu.querySelector('.user-email').textContent = user.email;
                 }
-            } else {
-                loginBtn.style.display = 'block';
-                registerBtn.style.display = 'block';
-                userMenu.style.display = 'none';
             }
+        } else {
+            // Utilisateur non connecté
+            if (loginBtn) loginBtn.style.display = 'block';
+            if (registerBtn) registerBtn.style.display = 'block';
+            if (userMenu) userMenu.style.display = 'none';
         }
+    }
 
-        if (userAvatar) {
-            userAvatar.addEventListener('click', function(e) {
-                e.stopPropagation();
-                menuDropdown.classList.toggle('active');
-            });
-        }
-
-        document.addEventListener('click', function() {
-            if (menuDropdown) {
-                menuDropdown.classList.remove('active');
-            }
+    // Gestion du menu utilisateur
+    const userMenu = document.getElementById('userMenu');
+    if (userMenu) {
+        userMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userMenu.querySelector('.menu-dropdown').classList.toggle('active');
         });
 
+        // Fermer le menu au clic en dehors
+        document.addEventListener('click', () => {
+            userMenu.querySelector('.menu-dropdown').classList.remove('active');
+        });
+
+        // Gestion de la déconnexion
+        const logoutBtn = document.getElementById('logoutBtn');
         if (logoutBtn) {
-            logoutBtn.addEventListener('click', function(e) {
+            logoutBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                authManager.handleLogout();
+                authService.logout();
+                updateAuthUI();
             });
         }
+    }
 
-        updateNavigation();
+    // Initialisation
+    document.addEventListener('DOMContentLoaded', () => {
+        updateAuthUI();
     });
+</script>
+
+// Ajoute ce script à la fin de ton index.html
+<script>
+    // Fonction pour vérifier si l'utilisateur est connecté
+    function checkAuth() {
+        const session = JSON.parse(localStorage.getItem('currentSession'));
+        const authLinks = document.getElementById('authLinks');
+        const userMenu = document.getElementById('userMenu');
+
+        if (session) {
+            // Utilisateur connecté
+            if (document.querySelector('.button-secondary')) {
+                document.querySelector('.button-secondary').style.display = 'none';
+            }
+            if (document.querySelector('.button-primary')) {
+                document.querySelector('.button-primary').style.display = 'none';
+            }
+            if (userMenu) {
+                userMenu.style.display = 'block';
+                userMenu.querySelector('.user-name').textContent = session.name;
+                userMenu.querySelector('.user-email').textContent = session.email;
+            }
+        } else {
+            // Utilisateur non connecté
+            if (userMenu) userMenu.style.display = 'none';
+        }
+    }
+
+    // Vérifie l'authentification au chargement de la page
+    document.addEventListener('DOMContentLoaded', checkAuth);
+
+    // Gestion de la déconnexion
+    if (document.getElementById('logoutBtn')) {
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('currentSession');
+            window.location.reload();
+        });
+    }
 </script>
 </body>
 </html>
