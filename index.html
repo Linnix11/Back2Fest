@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rap Revolution</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+<nav class="main-nav">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <img src="img/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link">Accueil</a>
+            <a href="#packages" class="nav-link">Packages</a>
+            <a href="#artists" class="nav-link">Artistes</a>
+            <a href="#destination" class="nav-link">Destination</a>
+            <div class="auth-links">
+                <a href="login.html" class="button-secondary" id="loginBtn">Connexion</a>
+                <a href="register.html" class="button-primary" id="registerBtn">S'inscrire</a>
+                <div class="user-menu" id="userMenu">
+                    <img src="/api/placeholder/32/32" alt="Profile" class="user-avatar">
+                    <div class="menu-dropdown">
+                         <!-- <a href="profile.html">Mon Profil</a> -->
+                        <a href="tickets.html">Mes Billets</a>
+                        <a href="#" id="logoutBtn">Déconnexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="burger-menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <video class="hero-video" autoplay muted loop>
+            <source src="/api/placeholder/video" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Rap Revolution</h1>
+            <h2>16-23 November 2025</h2>
+            <p class="hero-location">ALPE D'HUEZ • FRENCH ALPS</p>
+            <div class="hero-buttons">
+                <a href="#packages" class="button-primary">Book Now</a>
+                <a href="#aftermovie" class="button-secondary">Watch Aftermovie</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to Discover</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- Packages Section -->
+    <section class="packages" id="packages">
+        <div class="section-header">
+            <h2>CHOOSE YOUR MAGICAL EXPERIENCE</h2>
+            <p>Discover our exclusive packages for an unforgettable winter journey</p>
+        </div>
+        <div class="packages-grid">
+            <article class="package-card">
+                <div class="package-image">
+                    <img src="img/pass7.png" alt="7 Day Package">
+                    <div class="package-overlay">
+                        <span>FROM €825</span>
+                    </div>
+                </div>
+                <div class="package-content">
+                    <h3>7 Day Package</h3>
+                    <p>16-23 March 2025</p>
+                    <ul class="package-features">
+                        <li>Festival Pass</li>
+                        <li>Lodging</li>
+                        <li>Ski Pass</li>
+                    </ul>
+                    <a href="#book" class="button-primary">Book Package</a>
+                </div>
+            </article>
+            <article class="package-card">
+                <div class="package-image">
+                    <img src="img/pass4.png" alt="4 Day Package">
+                    <div class="package-overlay">
+                        <span>FROM €625</span>
+                    </div>
+                </div>
+                <div class="package-content">
+                    <h3>4 Day Package</h3>
+                    <p>19-23 March 2025</p>
+                    <ul class="package-features">
+                        <li>Festival Pass</li>
+                        <li>Lodging</li>
+                        <li>Ski Pass</li>
+                    </ul>
+                    <a href="#book" class="button-primary">Book Package</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+  <!-- Experience Section -->
+<section class="experience" id="experience">
+    <div class="experience-header">
+        <h2 class="glow-title">THE EXPERIENCE</h2>
+        <p class="experience-subtitle">Un festival unique mêlant rap et culture urbaine</p>
+    </div>
+
+    <div class="experience-container">
+        <div class="experience-showcase">
+            <div class="showcase-main">
+                <div class="video-wrapper">
+                    <video autoplay muted loop playsinline>
+                        <source src="video/experience.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay"></div>
+                </div>
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <img src="/api/placeholder/400/300" alt="Concert">
+                    <div class="item-content">
+                        <h3>MAIN STAGE</h3>
+                        <p>Une scène impressionnante avec effets spéciaux</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="/api/placeholder/400/300" alt="VIP Area">
+                    <div class="item-content">
+                        <h3>VIP EXPERIENCE</h3>
+                        <p>Accès exclusifs et vue imprenable</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img src="/api/placeholder/400/300" alt="Food Court">
+                    <div class="item-content">
+                        <h3>FOOD & DRINKS</h3>
+                        <p>Une sélection gastronomique variée</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="experience-features">
+            <div class="features-stats">
+                <div class="stat-block">
+                    <div class="stat-value-wrapper">
+                        <span class="stat-value counter">4</span>
+                        <span class="stat-unit">JOURS</span>
+                    </div>
+                    <div class="stat-ring"></div>
+                    <p class="stat-desc">De festival non-stop</p>
+                </div>
+                
+                <div class="stat-block">
+                    <div class="stat-value-wrapper">
+                        <span class="stat-value counter">50</span>
+                        <span class="stat-unit">ARTISTES</span>
+                    </div>
+                    <div class="stat-ring"></div>
+                    <p class="stat-desc">Sur 3 scènes différentes</p>
+                </div>
+                
+                <div class="stat-block">
+                    <div class="stat-value-wrapper">
+                        <span class="stat-value counter">20K</span>
+                        <span class="stat-unit">FESTIVALIERS</span>
+                    </div>
+                    <div class="stat-ring"></div>
+                    <p class="stat-desc">Capacité journalière</p>
+                </div>
+            </div>
+
+            <div class="experience-highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">🎵</div>
+                    <div class="highlight-content">
+                        <h3>Programmation Exclusive</h3>
+                        <p>Les plus grands noms du rap français et international</p>
+                    </div>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🎪</div>
+                    <div class="highlight-content">
+                        <h3>Villages Thématiques</h3>
+                        <p>Street art, culture urbaine, sports et animations</p>
+                    </div>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">✨</div>
+                    <div class="highlight-content">
+                        <h3>Shows Spectaculaires</h3>
+                        <p>Effets visuels, pyrotechnie et performances uniques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Lineup Teaser -->
+ <!-- Section Artistes -->
+<section class="artists-section" id="artists">
+    <div class="section-header">
+        <h2 class="glow-text">PREMIERS ARTISTES ANNONCÉS</h2>
+        <p>Plus d'artistes seront dévoilés prochainement...</p>
+    </div>
+    <div class="artists-grid">
+        <div class="artist-card">
+            <div class="artist-image">
+                <img src="img/booba.jpeg" alt="Artiste 1">
+                <div class="artist-overlay">
+                    <div class="artist-date">16 NOV</div>
+                </div>
+            </div>
+            <div class="artist-info">
+                <h3>BOOBA</h3>
+                <p class="artist-genre">RAP FR</p>
+                <div class="artist-social">
+                    <a href="https://open.spotify.com/intl-fr/artist/58wXmynHaAWI5hwlPZP3qL?si=jiSu6dlqRVG7YCGsppl20w" class="social-icon">SPOTIFY</a>
+                    <a href="https://www.instagram.com/boobamedia/" class="social-icon">INSTAGRAM</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <div class="artist-image">
+                <img src="img/artist2.jpg" alt="Artiste 2">
+                <div class="artist-overlay">
+                    <div class="artist-date">17 NOV</div>
+                </div>
+            </div>
+            <div class="artist-info">
+                <h3>DAMSO</h3>
+                <p class="artist-genre">RAP FR</p>
+                <div class="artist-social">
+                    <a href="#" class="social-icon">SPOTIFY</a>
+                    <a href="#" class="social-icon">INSTAGRAM</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <div class="artist-image">
+                <img src="img/artist3.jpg" alt="Artiste 3">
+                <div class="artist-overlay">
+                    <div class="artist-date">18 NOV</div>
+                </div>
+            </div>
+            <div class="artist-info">
+                <h3>SCH</h3>
+                <p class="artist-genre">RAP FR</p>
+                <div class="artist-social">
+                    <a href="#" class="social-icon">SPOTIFY</a>
+                    <a href="#" class="social-icon">INSTAGRAM</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <div class="artist-image">
+                <img src="img/artist4.jpg" alt="Artiste 4">
+                <div class="artist-overlay">
+                    <div class="artist-date">19 NOV</div>
+                </div>
+            </div>
+            <div class="artist-info">
+                <h3>NINHO</h3>
+                <p class="artist-genre">RAP FR</p>
+                <div class="artist-social">
+                    <a href="#" class="social-icon">SPOTIFY</a>
+                    <a href="#" class="social-icon">INSTAGRAM</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            <!-- Répéter pour autres artistes -->
+        </div>
+    </section>
+
+    <!-- Destination Section -->
+<section class="destination" id="destination">
+    <div class="destination-header">
+        <h2 class="destination-title">ALPE D'HUEZ</h2>
+        <div class="destination-subtitle">Le plus grand festival de rap en altitude</div>
+    </div>
+
+    <div class="destination-container">
+        <div class="destination-info">
+            <div class="destination-stats-wrapper">
+                <div class="destination-stat">
+                    <div class="stat-circle">
+                        <span class="stat-value">3330</span>
+                        <span class="stat-unit">m</span>
+                    </div>
+                    <span class="stat-label">Altitude</span>
+                </div>
+                <div class="destination-stat">
+                    <div class="stat-circle">
+                        <span class="stat-value">250</span>
+                        <span class="stat-unit">km</span>
+                    </div>
+                    <span class="stat-label">Pistes</span>
+                </div>
+                <div class="destination-stat">
+                    <div class="stat-circle">
+                        <span class="stat-value">300</span>
+                        <span class="stat-unit">j</span>
+                    </div>
+                    <span class="stat-label">Soleil/An</span>
+                </div>
+            </div>
+
+            <div class="destination-features">
+                <div class="feature-card">
+                    <div class="feature-icon">🏔️</div>
+                    <h3>Domaine Skiable</h3>
+                    <p>Un des plus grands domaines skiables d'Europe</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏂</div>
+                    <h3>Activités</h3>
+                    <p>Ski, snowboard, et sports d'hiver</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Scènes</h3>
+                    <p>3 scènes extérieures avec vue panoramique</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-gallery">
+            <div class="gallery-main">
+                <img src="/api/placeholder/800/600" alt="Vue panoramique Alpe d'Huez">
+                <div class="gallery-overlay">
+                    <div class="gallery-text">
+                        <h3>ALPE D'HUEZ</h3>
+                        <p>Le festival qui mixe rap et sports d'hiver</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/300" alt="Station de ski">
+                    <div class="item-overlay">Station</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/300" alt="Scène principale">
+                    <div class="item-overlay">Main Stage</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/300" alt="Vue des pistes">
+                    <div class="item-overlay">Pistes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Registration Section -->
+    <section class="register" id="register">
+        <div class="register-content">
+            <h2>REGISTER NOW</h2>
+            <p>Be the first to get access to packages</p>
+            <form class="register-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="button-primary">Register</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>info@rap-revolution.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Rap Revolution Winter. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Scripts d'authentification -->
+<script src="auth.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const authManager = new AuthManager();
+        const userMenu = document.getElementById('userMenu');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const userAvatar = document.querySelector('.user-avatar');
+        const menuDropdown = document.querySelector('.menu-dropdown');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        function updateNavigation() {
+            if (authManager.currentUser) {
+                loginBtn.style.display = 'none';
+                registerBtn.style.display = 'none';
+                userMenu.style.display = 'block';
+                if (authManager.currentUser.avatar) {
+                    userAvatar.src = authManager.currentUser.avatar;
+                }
+            } else {
+                loginBtn.style.display = 'block';
+                registerBtn.style.display = 'block';
+                userMenu.style.display = 'none';
+            }
+        }
+
+        if (userAvatar) {
+            userAvatar.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuDropdown.classList.toggle('active');
+            });
+        }
+
+        document.addEventListener('click', function() {
+            if (menuDropdown) {
+                menuDropdown.classList.remove('active');
+            }
+        });
+
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                authManager.handleLogout();
+            });
+        }
+
+        updateNavigation();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Rap Revolution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+    <link rel="stylesheet" href="register-styles.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <div class="register-header">
+                <div class="register-logo">
+                    <img src="img/logo.png" alt="Logo Rap Revolution">
+                </div>
+                <h1>Créer un compte</h1>
+                <p>Rejoignez la révolution du rap</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Nom complet" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                </div>
+
+                <div class="form-group">
+                    <div class="password-field">
+                        <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
+                        <span class="password-toggle">👁️</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="password-field">
+                        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirmer le mot de passe" required>
+                        <span class="password-toggle">👁️</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" name="phone" class="form-control" placeholder="Téléphone" required>
+                </div>
+
+                <div class="form-checkbox">
+                    <label>
+                        <input type="checkbox" name="newsletter">
+                        <span>Je souhaite recevoir la newsletter</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="register-button">
+                    <span class="button-text">S'inscrire</span>
+                    <div class="button-loader"></div>
+                </button>
+            </form>
+
+            <div id="formMessage" class="form-message"></div>
+
+            <div class="auth-links">
+                <p>Déjà un compte ? <a href="login.html">Connectez-vous</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/register.js"></script>
+</body>
+</html>
