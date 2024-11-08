@@ -1660,26 +1660,54 @@ body {
     animation: countUp 1s ease forwards;
 }
 
-/* Styles pour la section newsletter */
-.form-message {
-    margin-top: 1rem;
-    padding: 0.8rem;
-    border-radius: 8px;
+/* Section Newsletter */
+.register {
+    position: relative;
+    padding: 8rem 2rem;
+    background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9));
+    overflow: hidden;
+}
+
+.register-content {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
     text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
-.form-message.success {
-    background: rgba(0, 255, 136, 0.1);
-    color: #00ff88;
-    opacity: 1;
+.register h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
-.form-message.error {
-    background: rgba(255, 68, 68, 0.1);
-    color: #ff4444;
-    opacity: 1;
+.register p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.register-form {
+    display: flex;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.register-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 1rem 1.5rem;
+    color: white;
+    font-size: 1rem;
+}
+
+.register-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .button-loader {
@@ -1696,17 +1724,30 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    animation: fadeIn 0.3s ease;
+}
+
+.form-message.success {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+}
+
+.form-message.error {
+    background: rgba(255, 68, 68, 0.1);
+    color: #ff4444;
+}
+
 @keyframes spin {
     to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-.button-primary {
-    position: relative;
-}
-
-.button-primary:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Style moderne pour la section newsletter */
@@ -1929,4 +1970,19 @@ body {
     .register-form button {
         width: 100%;
     }
+}
+.register {
+    position: relative;
+    padding: 8rem 2rem;
+    /* Remplace l'image par un dégradé simple */
+    background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9));
+    overflow: hidden;
+}
+
+.experience {
+    position: relative;
+    padding: 8rem 2rem;
+    /* Remplace l'image par un dégradé simple */
+    background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9));
+    overflow: hidden;
 }
