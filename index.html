@@ -20,39 +20,8 @@
         <div class="nav-links">
             <a href="#home" class="nav-link">Accueil</a>
             <a href="#packages" class="nav-link">Packages</a>
-            <a href="#practical" class="nav-link">Practical</a>
+            <a href="#experience" class="nav-link">Practical</a>
             <a href="#destination" class="nav-link">Destination</a>
-            <div class="auth-links" id="authLinks">
-                <!-- Version non connectée -->
-                <a href="login.html" class="button-secondary">Connexion</a>
-                <a href="register.html" class="button-primary">S'inscrire</a>
-                
-                <!-- Version connectée (cachée par défaut) -->
-                <div class="user-menu" id="userMenu" style="display: none;">
-                    <img src="/api/placeholder/32/32" alt="Profile" class="user-avatar">
-                    <div class="menu-dropdown">
-                        <div class="menu-header">
-                            <div class="user-name">Votre Nom</div>
-                            <div class="user-email">votre@email.com</div>
-                        </div>
-                        <div class="menu-options">
-                            <a href="profile.html" class="menu-option">
-                                <i class="fas fa-user"></i>
-                                Mon Profil
-                            </a>
-                            <a href="tickets.html" class="menu-option">
-                                <i class="fas fa-ticket-alt"></i>
-                                Mes Billets
-                                <span class="badge">2</span>
-                            </a>
-                            <a href="#" class="menu-option logout-option" id="logoutBtn">
-                                <i class="fas fa-sign-out-alt"></i>
-                                Déconnexion
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
                 </div>
             </div>
@@ -66,7 +35,7 @@
     <!-- Hero Section -->
     <header class="hero" id="home">
         <video class="hero-video" autoplay muted loop>
-            <source src="/api/placeholder/video" type="video/mp4">
+            <source src="img/video.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
             <h1>Rap Revolution</h1>
@@ -141,28 +110,28 @@
             <div class="showcase-main">
                 <div class="video-wrapper">
                     <video autoplay muted loop playsinline>
-                        <source src="video/experience.mp4" type="video/mp4">
+                        <source src="img/autre video" type="video/mp4">
                     </video>
                     <div class="video-overlay"></div>
                 </div>
             </div>
             <div class="showcase-grid">
                 <div class="showcase-item">
-                    <img src="/api/placeholder/400/300" alt="Concert">
+                    <img src="img/mstage.webp" alt="Concert">
                     <div class="item-content">
                         <h3>MAIN STAGE</h3>
                         <p>Une scène impressionnante avec effets spéciaux</p>
                     </div>
                 </div>
                 <div class="showcase-item">
-                    <img src="/api/placeholder/400/300" alt="VIP Area">
+                    <img src="img/vip.webp" alt="VIP Area">
                     <div class="item-content">
                         <h3>VIP EXPERIENCE</h3>
                         <p>Accès exclusifs et vue imprenable</p>
                     </div>
                 </div>
                 <div class="showcase-item">
-                    <img src="/api/placeholder/400/300" alt="Food Court">
+                    <img src="img/resto.webp" alt="Food Court">
                     <div class="item-content">
                         <h3>FOOD & DRINKS</h3>
                         <p>Une sélection gastronomique variée</p>
@@ -257,7 +226,7 @@
 
         <div class="artist-card">
             <div class="artist-image">
-                <img src="img/artist2.jpg" alt="Artiste 2">
+                <img src="img/damso.jpeg" alt="Artiste 2">
                 <div class="artist-overlay">
                     <div class="artist-date">17 NOV</div>
                 </div>
@@ -274,7 +243,7 @@
 
         <div class="artist-card">
             <div class="artist-image">
-                <img src="img/artist3.jpg" alt="Artiste 3">
+                <img src="img/sch.jpeg" alt="Artiste 3">
                 <div class="artist-overlay">
                     <div class="artist-date">18 NOV</div>
                 </div>
@@ -291,7 +260,7 @@
 
         <div class="artist-card">
             <div class="artist-image">
-                <img src="img/artist4.jpg" alt="Artiste 4">
+                <img src="img/ninho.jpeg" alt="Artiste 4">
                 <div class="artist-overlay">
                     <div class="artist-date">19 NOV</div>
                 </div>
@@ -365,7 +334,7 @@
 
         <div class="destination-gallery">
             <div class="gallery-main">
-                <img src="/api/placeholder/800/600" alt="Vue panoramique Alpe d'Huez">
+                <img src="img/pano.png" alt="Vue panoramique Alpe d'Huez">
                 <div class="gallery-overlay">
                     <div class="gallery-text">
                         <h3>ALPE D'HUEZ</h3>
@@ -375,15 +344,15 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/300" alt="Station de ski">
+                    <img src="img/piste.jpeg" alt="Station de ski">
                     <div class="item-overlay">Station</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/300" alt="Scène principale">
+                    <img src="img/stage2.webp" alt="Scène principale">
                     <div class="item-overlay">Main Stage</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/400/300" alt="Vue des pistes">
+                    <img src="img/ski.jpeg" alt="Vue des pistes">
                     <div class="item-overlay">Pistes</div>
                 </div>
             </div>
@@ -391,17 +360,21 @@
     </div>
 </section>
 
-    <!-- Registration Section -->
-    <section class="register" id="register">
-        <div class="register-content">
-            <h2>REGISTER NOW</h2>
-            <p>Be the first to get access to packages</p>
-            <form class="register-form">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit" class="button-primary">Register</button>
-            </form>
-        </div>
-    </section>
+<!-- Section Newsletter -->
+<section class="register" id="register">
+    <div class="register-content">
+        <h2>REGISTER NOW</h2>
+        <p>Be the first to get access to packages</p>
+        <form id="newsletterForm" class="register-form">
+            <input type="email" id="emailInput" placeholder="Enter your email" required>
+            <button type="submit" class="button-primary">
+                <span class="button-text">Register</span>
+                <span class="button-loader"></span>
+            </button>
+        </form>
+        <div id="formMessage" class="form-message"></div>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -428,106 +401,77 @@
             <p>&copy; 2024 Rap Revolution Winter. All rights reserved.</p>
         </div>
     </footer>
-    <!-- Scripts d'authentification -->
->
 
-<script type="module">
-    import { authService } from './js/auth.js';
 
-    function updateAuthUI() {
-        const authLinks = document.getElementById('authLinks');
-        const userMenu = document.getElementById('userMenu');
-        const loginBtn = authLinks.querySelector('.button-secondary');
-        const registerBtn = authLinks.querySelector('.button-primary');
-
-        if (authService.isAuthenticated()) {
-            // Utilisateur connecté
-            if (loginBtn) loginBtn.style.display = 'none';
-            if (registerBtn) registerBtn.style.display = 'none';
-            if (userMenu) {
-                userMenu.style.display = 'block';
-                const user = authService.getCurrentUser();
-                if (user) {
-                    userMenu.querySelector('.user-name').textContent = user.name;
-                    userMenu.querySelector('.user-email').textContent = user.email;
-                }
-            }
-        } else {
-            // Utilisateur non connecté
-            if (loginBtn) loginBtn.style.display = 'block';
-            if (registerBtn) registerBtn.style.display = 'block';
-            if (userMenu) userMenu.style.display = 'none';
-        }
-    }
-
-    // Gestion du menu utilisateur
-    const userMenu = document.getElementById('userMenu');
-    if (userMenu) {
-        userMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            userMenu.querySelector('.menu-dropdown').classList.toggle('active');
-        });
-
-        // Fermer le menu au clic en dehors
-        document.addEventListener('click', () => {
-            userMenu.querySelector('.menu-dropdown').classList.remove('active');
-        });
-
-        // Gestion de la déconnexion
-        const logoutBtn = document.getElementById('logoutBtn');
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', (e) => {
+    <!-- Script newslater-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletterForm');
+            const formMessage = document.getElementById('formMessage');
+        
+            newsletterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                authService.logout();
-                updateAuthUI();
+                
+                const email = document.getElementById('emailInput').value;
+                const button = newsletterForm.querySelector('button');
+                const buttonText = button.querySelector('.button-text');
+                const buttonLoader = button.querySelector('.button-loader');
+        
+                // Récupérer les emails existants //
+                let subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers')) || [];
+        
+                // Vérifier si l'email existe déjà //
+                if (subscribers.includes(email)) {
+                    showMessage('Cet email est déjà inscrit !', 'error');
+                    return;
+                }
+        
+                // Effet de chargement //
+                button.disabled = true;
+                buttonText.style.opacity = '0';
+                buttonLoader.style.display = 'block';
+        
+                // Simuler un délai d'envoi //
+                setTimeout(() => {
+                    // Ajouter le nouvel email //
+                    subscribers.push(email);
+                    
+                    // Sauvegarder dans localStorage //
+                    localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
+        
+                    // Message de succès //
+                    showMessage('Inscription réussie !', 'success');
+                    
+                    // Réinitialiser le formulaire //
+                    newsletterForm.reset();
+        
+                    // Réinitialiser le bouton //
+                    button.disabled = false;
+                    buttonText.style.opacity = '1';
+                    buttonLoader.style.display = 'none';
+        
+                    // Log pour voir les inscrits (à retirer en production) //
+                    console.log('Inscrits à la newsletter:', subscribers);
+                }, 1000);
             });
-        }
-    }
-
-    // Initialisation
-    document.addEventListener('DOMContentLoaded', () => {
-        updateAuthUI();
-    });
-</script>
-
-// Ajoute ce script à la fin de ton index.html
-<script>
-    // Fonction pour vérifier si l'utilisateur est connecté
-    function checkAuth() {
-        const session = JSON.parse(localStorage.getItem('currentSession'));
-        const authLinks = document.getElementById('authLinks');
-        const userMenu = document.getElementById('userMenu');
-
-        if (session) {
-            // Utilisateur connecté
-            if (document.querySelector('.button-secondary')) {
-                document.querySelector('.button-secondary').style.display = 'none';
+        
+            function showMessage(message, type) {
+                formMessage.textContent = message;
+                formMessage.className = `form-message ${type}`;
+                
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                    formMessage.className = 'form-message';
+                }, 3000);
             }
-            if (document.querySelector('.button-primary')) {
-                document.querySelector('.button-primary').style.display = 'none';
-            }
-            if (userMenu) {
-                userMenu.style.display = 'block';
-                userMenu.querySelector('.user-name').textContent = session.name;
-                userMenu.querySelector('.user-email').textContent = session.email;
-            }
-        } else {
-            // Utilisateur non connecté
-            if (userMenu) userMenu.style.display = 'none';
-        }
-    }
-
-    // Vérifie l'authentification au chargement de la page
-    document.addEventListener('DOMContentLoaded', checkAuth);
-
-    // Gestion de la déconnexion
-    if (document.getElementById('logoutBtn')) {
-        document.getElementById('logoutBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            localStorage.removeItem('currentSession');
-            window.location.reload();
         });
-    }
-</script>
+        // Dans le gestionnaire de soumission du formulaire
+        if (emailDatabase.addSubscriber(email)) {
+        showMessage('Inscription réussie !', 'success');
+        form.reset();
+        } else {
+        showMessage('Cet email est déjà inscrit.', 'error');
+        }
+        </script>
 </body>
 </html>

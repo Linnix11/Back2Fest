@@ -1659,3 +1659,273 @@ body {
 .counter {
     animation: countUp 1s ease forwards;
 }
+
+/* Styles pour la section newsletter */
+.form-message {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form-message.success {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    opacity: 1;
+}
+
+.form-message.error {
+    background: rgba(255, 68, 68, 0.1);
+    color: #ff4444;
+    opacity: 1;
+}
+
+.button-loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.button-primary {
+    position: relative;
+}
+
+.button-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Style moderne pour la section newsletter */
+.register {
+    position: relative;
+    padding: 8rem 2rem;
+    background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)),
+                url('img/newsletter-bg.jpg') center/cover fixed;
+    overflow: hidden;
+}
+
+/* Effet de particules/brillance */
+.register::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(149, 0, 255, 0.15), transparent 70%);
+    animation: pulse 4s infinite;
+}
+
+.register-content {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 2;
+}
+
+.register h2 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(149, 0, 255, 0.5);
+    animation: glowText 2s infinite alternate;
+}
+
+.register p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+}
+
+.register-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(149, 0, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(149, 0, 255, 0.2);
+}
+
+.register-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 1rem 1.5rem;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+.register-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.register-form button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.register-form button:hover {
+    background: #a020f0;
+    transform: translateX(3px);
+}
+
+/* Effet de brillance au survol du bouton */
+.register-form button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+}
+
+.register-form button:hover::before {
+    left: 100%;
+}
+
+/* Loader animation */
+.button-loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Message de succès/erreur */
+.form-message {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+.form-message.success {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: #00ff88;
+}
+
+.form-message.error {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid rgba(255, 68, 68, 0.3);
+    color: #ff4444;
+}
+
+/* Animations */
+@keyframes glowText {
+    from {
+        text-shadow: 0 0 20px rgba(149, 0, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(149, 0, 255, 0.8),
+                     0 0 40px rgba(149, 0, 255, 0.6);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .register {
+        padding: 4rem 1rem;
+    }
+
+    .register h2 {
+        font-size: 2.5rem;
+    }
+
+    .register-form {
+        flex-direction: column;
+        background: none;
+        border: none;
+        padding: 0;
+        gap: 1rem;
+    }
+
+    .register-form input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(149, 0, 255, 0.2);
+        border-radius: 50px;
+    }
+
+    .register-form button {
+        width: 100%;
+    }
+}

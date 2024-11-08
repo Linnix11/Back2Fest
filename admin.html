@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Newsletter Rap Revolution</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: #0a0a0a;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .admin-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: rgba(20, 20, 20, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(149, 0, 255, 0.2);
+            box-shadow: 0 0 30px rgba(149, 0, 255, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(149, 0, 255, 0.2);
+        }
+
+        .header h1 {
+            color: #9500ff;
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button {
+            background: #9500ff;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .button:hover {
+            background: #7b00d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(149, 0, 255, 0.3);
+        }
+
+        .stats {
+            background: rgba(149, 0, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-around;
+            border: 1px solid rgba(149, 0, 255, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #9500ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .search {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(149, 0, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search:focus {
+            outline: none;
+            border-color: #9500ff;
+            box-shadow: 0 0 15px rgba(149, 0, 255, 0.2);
+        }
+
+        .subscriber-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .subscriber-list th,
+        .subscriber-list td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(149, 0, 255, 0.1);
+        }
+
+        .subscriber-list th {
+            background: rgba(149, 0, 255, 0.1);
+            color: #9500ff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .subscriber-list tr:hover {
+            background: rgba(149, 0, 255, 0.05);
+        }
+
+        .delete-button {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background: rgba(255, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subscriber-list tr {
+            animation: fadeIn 0.3s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="header">
+            <h1>Newsletter Subscribers</h1>
+            <div class="action-buttons">
+                <button onclick="window.exportData('csv')" class="button">Export CSV</button>
+                <button onclick="window.exportData('json')" class="button">Export JSON</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="totalCount">0</div>
+                <div class="stat-label">Total Subscribers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="todayCount">0</div>
+                <div class="stat-label">Today</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="weekCount">0</div>
+                <div class="stat-label">This Week</div>
+            </div>
+        </div>
+
+        <input 
+            type="text" 
+            id="searchInput" 
+            class="search" 
+            placeholder="Rechercher un email..."
+        >
+
+        <table class="subscriber-list">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Date d'inscription</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="subscribersList"></tbody>
+        </table>
+    </div>
+
+    <script type="module">
+        import emailDatabase from './js/database.js';
+
+        function displaySubscribers(filter = '') {
+            const subscribers = emailDatabase.getAllSubscribers();
+            const tbody = document.getElementById('subscribersList');
+            const totalCount = document.getElementById('totalCount');
+            const todayCount = document.getElementById('todayCount');
+            const weekCount = document.getElementById('weekCount');
+            
+            // Mise à jour des statistiques
+            const today = new Date();
+            const weekAgo = new Date(today - 7 * 24 * 60 * 60 * 1000);
+            
+            const todaySubscribers = subscribers.filter(sub => {
+                const subDate = new Date(sub.date);
+                return subDate.toDateString() === today.toDateString();
+            });
+            
+            const weekSubscribers = subscribers.filter(sub => {
+                const subDate = new Date(sub.date);
+                return subDate >= weekAgo;
+            });
+
+            totalCount.textContent = subscribers.length;
+            todayCount.textContent = todaySubscribers.length;
+            weekCount.textContent = weekSubscribers.length;
+            
+            // Affichage des abonnés
+            tbody.innerHTML = '';
+            
+            const filteredSubscribers = subscribers.filter(sub => 
+                sub.email.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            if (filteredSubscribers.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="3" class="empty-state">
+                            Aucun abonné trouvé
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filteredSubscribers.forEach((sub, index) => {
+                const tr = document.createElement('tr');
+                const date = new Date(sub.date).toLocaleString('fr-FR', {
+                    dateStyle: 'medium',
+                    timeStyle: 'short'
+                });
+                
+                tr.innerHTML = `
+                    <td>${sub.email}</td>
+                    <td>${date}</td>
+                    <td>
+                        <button 
+                            onclick="window.removeSubscriber('${sub.email}')" 
+                            class="delete-button"
+                        >
+                            Supprimer
+                        </button>
+                    </td>
+                `;
+                tr.style.animationDelay = `${index * 0.1}s`;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Recherche en temps réel
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            displaySubscribers(e.target.value);
+        });
+
+        // Export des données
+        window.exportData = function(format) {
+            if (format === 'csv') {
+                emailDatabase.exportToCSV();
+            } else if (format === 'json') {
+                emailDatabase.exportToJSON();
+            }
+        };
+
+        // Suppression d'un abonné
+        window.removeSubscriber = function(email) {
+            if (confirm(`Voulez-vous vraiment supprimer l'email ${email} ?`)) {
+                emailDatabase.removeSubscriber(email);
+                displaySubscribers(document.getElementById('searchInput').value);
+            }
+        };
+
+        // Chargement initial
+        displaySubscribers();
+
+        // Rafraîchissement automatique toutes les 30 secondes
+        setInterval(() => {
+            displaySubscribers(document.getElementById('searchInput').value);
+        }, 30000);
+    </script>
+</body>
+</html>
