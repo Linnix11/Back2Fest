@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rap Revolution</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <head>
         <!-- Ajoute cette ligne avec tes autres liens CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -360,13 +360,12 @@
     </div>
 </section>
 
-<!-- Section Newsletter -->
 <section class="register" id="register">
     <div class="register-content">
         <h2>REGISTER NOW</h2>
         <p>Be the first to get access to packages</p>
         <form id="newsletterForm" class="register-form">
-            <input type="email" id="emailInput" placeholder="Enter your email" required>
+            <input type="email" id="emailInput" name="email" placeholder="Enter your email" required>
             <button type="submit" class="button-primary">
                 <span class="button-text">Register</span>
                 <span class="button-loader"></span>
@@ -403,75 +402,57 @@
     </footer>
 
 
-    <!-- Script newslater-->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const newsletterForm = document.getElementById('newsletterForm');
+    <!-- News later -->
+    <script type="module">
+        import { newsletterDB } from './js/newsletter.js';
+    
+        document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const email = document.getElementById('emailInput').value;
+            const button = form.querySelector('button');
+            const buttonText = button.querySelector('.button-text');
+            const buttonLoader = button.querySelector('.button-loader');
             const formMessage = document.getElementById('formMessage');
-        
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const email = document.getElementById('emailInput').value;
-                const button = newsletterForm.querySelector('button');
-                const buttonText = button.querySelector('.button-text');
-                const buttonLoader = button.querySelector('.button-loader');
-        
-                // Récupérer les emails existants //
-                let subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers')) || [];
-        
-                // Vérifier si l'email existe déjà //
-                if (subscribers.includes(email)) {
-                    showMessage('Cet email est déjà inscrit !', 'error');
-                    return;
+    
+            // Animation de chargement
+            button.disabled = true;
+            buttonText.style.opacity = '0';
+            buttonLoader.style.display = 'block';
+    
+            try {
+                // Tenter l'inscription
+                const result = await newsletterDB.addSubscriber(email);
+    
+                // Afficher le message approprié
+                formMessage.textContent = result.message;
+                formMessage.className = `form-message ${result.success ? 'success' : 'error'}`;
+    
+                // Si succès, vider le formulaire
+                if (result.success) {
+                    form.reset();
                 }
-        
-                // Effet de chargement //
-                button.disabled = true;
-                buttonText.style.opacity = '0';
-                buttonLoader.style.display = 'block';
-        
-                // Simuler un délai d'envoi //
+    
+            } catch (error) {
+                // Gérer l'erreur
+                formMessage.textContent = 'Une erreur est survenue';
+                formMessage.className = 'form-message error';
+            } finally {
+                // Réactiver le bouton
+                button.disabled = false;
+                buttonText.style.opacity = '1';
+                buttonLoader.style.display = 'none';
+    
+                // Cacher le message après 3 secondes
                 setTimeout(() => {
-                    // Ajouter le nouvel email //
-                    subscribers.push(email);
-                    
-                    // Sauvegarder dans localStorage //
-                    localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
-        
-                    // Message de succès //
-                    showMessage('Inscription réussie !', 'success');
-                    
-                    // Réinitialiser le formulaire //
-                    newsletterForm.reset();
-        
-                    // Réinitialiser le bouton //
-                    button.disabled = false;
-                    buttonText.style.opacity = '1';
-                    buttonLoader.style.display = 'none';
-        
-                    // Log pour voir les inscrits (à retirer en production) //
-                    console.log('Inscrits à la newsletter:', subscribers);
-                }, 1000);
-            });
-        
-            function showMessage(message, type) {
-                formMessage.textContent = message;
-                formMessage.className = `form-message ${type}`;
-                
-                setTimeout(() => {
-                    formMessage.textContent = '';
                     formMessage.className = 'form-message';
+                    formMessage.textContent = '';
                 }, 3000);
             }
         });
-        // Dans le gestionnaire de soumission du formulaire
-        if (emailDatabase.addSubscriber(email)) {
-        showMessage('Inscription réussie !', 'success');
-        form.reset();
-        } else {
-        showMessage('Cet email est déjà inscrit.', 'error');
-        }
-        </script>
+    </script>
+
+<script src="js/newsletter.js"></script>
 </body>
 </html>

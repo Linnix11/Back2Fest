@@ -1852,10 +1852,11 @@ body {
 }
 
 .form-message.success {
-    background: rgba(0, 255, 136, 0.1);
-    border: 1px solid rgba(0, 255, 136, 0.3);
+    background: rgba(136, 0, 255, 0.1);
+    border: 1px solid rgba(166, 0, 255, 0.3);
     color: #00ff88;
 }
+
 
 .form-message.error {
     background: rgba(255, 68, 68, 0.1);
